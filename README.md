@@ -1,2 +1,3 @@
-# code
-Códigos diversos de estudos e projetos pessoais
+# Charles' Code Repository
+
+Study and personal projects
