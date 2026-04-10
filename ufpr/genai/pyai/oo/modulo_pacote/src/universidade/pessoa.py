@@ -1,10 +1,13 @@
+from typing import cast
+from universidade.exceptions import cpf_invalido
 class Pessoa:
     def __init__(self, nome=None, cpf=-1):
         self.__nome = nome
+
         if self.__validar_cpf(cpf):
             self.__cpf = cpf
         else:
-            self.__cpf = -1 #Indica CPF inválido
+            raise cpf_invalido.InvalidCpf(cpf, "CPF Inválido")
 
     @property
     def nome(self):
@@ -27,7 +30,10 @@ class Pessoa:
         if self.__validar_cpf(cpf):
             self.__cpf = cpf
         else:
-            self.__cpf = -1 #Indica CPF inválido
+            raise cpf_invalido.InvalidCpf(cpf)
+        
+    def __eq__(self, other):
+        return self.__cpf == cast(Pessoa, other).__cpf
 
     def __validar_cpf(self, cpf_teste):
         somatorio_valida_ultimo = 0
