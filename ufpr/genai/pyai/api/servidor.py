@@ -1,4 +1,5 @@
-from fastapi import FastAPI
+from typing import Annotated
+from fastapi import FastAPI, Path
 import datetime
 
 app = FastAPI()
@@ -12,7 +13,7 @@ def hora_atual():
    return {'hora': str(datetime.datetime.now())}
 
 @app.get('/verificar-cpf/{cpf_teste}')
-def verificar_cpf(cpf_teste: int):
+def verificar_cpf(cpf_teste: Annotated[int, Path(title="CPF", description="O CPF a ser testado", ge=1, le=99999999999)]):
    somatorio_valida_ultimo = 0
    somatorio_valida_penultimo = 0
 
