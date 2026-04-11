@@ -47,3 +47,5 @@ def verificar_cpf(cpf_teste: Annotated[int, Path(title="CPF", description="O CPF
          return False # CPF inválido
    
    return True # CPF válido
+
+
